@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mufliha Alom · Data Analyst & CS Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF9F4;
+    --bg-alt: #F3EFE5;
+    --ink: #22262B;
+    --ink-soft: #565B62;
+    --navy: #1F3B4D;
+    --honey: #D9A441;
+    --honey-dark: #B9842A;
+    --court: #3F7863;
+    --line: #DCD5C4;
+    --card: #FFFFFF;
+    --radius: 4px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--court);
+    font-weight:600;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; margin:0; color:var(--navy);}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,249,244,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .brand{font-family:'Fraunces', serif; font-weight:600; font-size:19px; color:var(--navy); text-decoration:none;}
+  .navlinks{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .navlinks a{
+    text-decoration:none; font-size:14px; font-weight:500; color:var(--ink-soft);
+    border-bottom:2px solid transparent; padding-bottom:3px; transition:border-color .2s, color .2s;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{color:var(--navy); border-color:var(--honey);}
+  .navlinks a:focus-visible{outline:2px solid var(--court); outline-offset:4px;}
+
+  /* HERO */
+  header.hero{padding:88px 0 72px; position:relative; overflow:hidden;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;
+  }
+  .hero h1{font-size:56px; line-height:1.05; font-weight:600; letter-spacing:-0.01em;}
+  .hero h1 em{font-style:italic; font-weight:600; color:var(--honey-dark);}
+  .hero p.lede{font-size:18px; color:var(--ink-soft); max-width:46ch; margin-top:18px;}
+  .cta-row{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:var(--radius);
+    font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:500;
+    text-decoration:none; border:1.5px solid var(--navy); transition:transform .15s, background .2s, color .2s;
+  }
+  .btn-solid{background:var(--navy); color:var(--bg);}
+  .btn-solid:hover{background:var(--honey-dark); border-color:var(--honey-dark); transform:translateY(-1px);}
+  .btn-outline{background:transparent; color:var(--navy);}
+  .btn-outline:hover{background:var(--navy); color:var(--bg); transform:translateY(-1px);}
+  .btn:focus-visible{outline:2px solid var(--court); outline-offset:3px;}
+
+  /* Hero graphic: dot-grid + shuttlecock arc, drawn with svg */
+  .hero-art{position:relative; height:340px;}
+  .hero-art svg{width:100%; height:100%;}
+  .arc-path{
+    stroke:var(--court); stroke-width:2; fill:none; stroke-dasharray:4 6;
+    animation:draw 2.2s ease-out forwards;
+  }
+  @keyframes draw{
+    from{stroke-dashoffset:400;}
+    to{stroke-dashoffset:0;}
+  }
+
+  section{padding:76px 0;}
+  section.alt{background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:44px; max-width:60ch;}
+  .section-head h2{font-size:34px; font-weight:600; margin-top:8px;}
+  .section-head p{color:var(--ink-soft); margin-top:10px; font-size:15.5px;}
+
+  /* ABOUT + RECIPE CARD */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  .about-copy p{font-size:16px; color:var(--ink); margin:0 0 16px;}
+  .about-copy .tags{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; background:var(--card);
+    border:1px solid var(--line); padding:6px 12px; border-radius:100px; color:var(--ink-soft);
+  }
+
+  .recipe-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:32px 30px 28px;
+    box-shadow:0 18px 40px -22px rgba(31,59,77,0.35);
+    transform:rotate(-1.6deg);
+    position:relative;
+  }
+  .recipe-card::before{
+    content:"";
+    position:absolute; top:-14px; left:36px; width:64px; height:22px;
+    background:rgba(217,164,65,0.55);
+    transform:rotate(-4deg);
+  }
+  .recipe-card h3{
+    font-size:22px; font-style:italic; font-weight:600; border-bottom:2px dashed var(--line);
+    padding-bottom:14px; margin-bottom:16px;
+  }
+  .recipe-card .yield{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--court); margin-bottom:18px; display:block;}
+  .recipe-card .col-label{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--honey-dark); font-weight:600; margin:18px 0 8px;
+  }
+  .recipe-card ul{margin:0; padding-left:18px; font-size:14.5px;}
+  .recipe-card li{margin-bottom:6px;}
+  .recipe-card .method li{margin-bottom:10px;}
+
+  /* EXPERIENCE TIMELINE */
+  .timeline{border-left:2px solid var(--line); margin-left:6px; padding-left:36px; display:flex; flex-direction:column; gap:40px;}
+  .tl-item{position:relative;}
+  .tl-item::before{
+    content:""; position:absolute; left:-44px; top:4px; width:12px; height:12px; border-radius:50%;
+    background:var(--bg); border:3px solid var(--court);
+  }
+  .tl-date{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--court); font-weight:600;}
+  .tl-item h3{font-size:20px; margin-top:6px;}
+  .tl-org{color:var(--ink-soft); font-size:14.5px; margin-top:2px; margin-bottom:12px;}
+  .tl-item ul{margin:0; padding-left:20px; font-size:15px;}
+  .tl-item li{margin-bottom:6px;}
+
+  /* PROJECTS */
+  .proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .proj-card{
+    background:var(--card); border:1px solid var(--line); border-radius:6px; padding:26px 24px;
+    display:flex; flex-direction:column; height:100%; transition:transform .2s, box-shadow .2s;
+  }
+  .proj-card:hover{transform:translateY(-4px); box-shadow:0 16px 30px -20px rgba(31,59,77,0.4);}
+  .proj-card .eyebrow{margin-bottom:10px;}
+  .proj-card h3{font-size:19px; margin-bottom:10px; line-height:1.25;}
+  .proj-card p{font-size:14.5px; color:var(--ink-soft); flex-grow:1;}
+  .proj-tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:14px;}
+  .proj-tags span{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; background:var(--bg-alt); padding:4px 9px;
+    border-radius:100px; color:var(--navy);
+  }
+
+  /* SKILLS */
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .skill-block .col-label{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--court); font-weight:600; margin-bottom:14px; display:block;
+  }
+  .skill-block .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-size:13.5px; padding:7px 13px; border-radius:100px; background:var(--card);
+    border:1px solid var(--line);
+  }
+
+  /* CONTACT */
+  footer{padding:64px 0 48px; text-align:center;}
+  footer h2{font-size:32px;}
+  footer p{color:var(--ink-soft); max-width:48ch; margin:14px auto 30px;}
+  .contact-links{display:flex; justify-content:center; gap:16px; flex-wrap:wrap;}
+  .foot-note{margin-top:48px; font-size:12.5px; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width: 860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{height:220px; order:-1;}
+    .hero h1{font-size:40px;}
+    .about-grid{grid-template-columns:1fr;}
+    .recipe-card{transform:rotate(0deg);}
+    .proj-grid{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:1fr;}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Mufliha Alom</a>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Detroit, MI · Open to Data, AI & Tech roles</span>
+      <h1>Turning messy data into <em>clear</em> decisions.</h1>
+      <p class="lede">Computer Science student at Wayne State University and Data Analytics Intern, currently exploring AI, machine learning, and the small habits — like a good badminton rally or a well-timed loaf of bread — that make problem-solving fun.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#projects">See my projects</a>
+        <a class="btn btn-outline" href="mailto:alommufliha@gmail.com">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- dot grid -->
+        <g fill="#DCD5C4">
+          <circle cx="20" cy="20" r="2"></circle><circle cx="60" cy="20" r="2"></circle><circle cx="100" cy="20" r="2"></circle><circle cx="140" cy="20" r="2"></circle><circle cx="180" cy="20" r="2"></circle><circle cx="220" cy="20" r="2"></circle><circle cx="260" cy="20" r="2"></circle>
+          <circle cx="20" cy="60" r="2"></circle><circle cx="60" cy="60" r="2"></circle><circle cx="100" cy="60" r="2"></circle><circle cx="140" cy="60" r="2"></circle><circle cx="180" cy="60" r="2"></circle><circle cx="220" cy="60" r="2"></circle><circle cx="260" cy="60" r="2"></circle>
+          <circle cx="20" cy="100" r="2"></circle><circle cx="60" cy="100" r="2"></circle><circle cx="100" cy="100" r="2"></circle><circle cx="140" cy="100" r="2"></circle><circle cx="180" cy="100" r="2"></circle><circle cx="220" cy="100" r="2"></circle><circle cx="260" cy="100" r="2"></circle>
+          <circle cx="20" cy="140" r="2"></circle><circle cx="60" cy="140" r="2"></circle><circle cx="100" cy="140" r="2"></circle><circle cx="140" cy="140" r="2"></circle><circle cx="180" cy="140" r="2"></circle><circle cx="220" cy="140" r="2"></circle><circle cx="260" cy="140" r="2"></circle>
+          <circle cx="20" cy="180" r="2"></circle><circle cx="60" cy="180" r="2"></circle><circle cx="100" cy="180" r="2"></circle><circle cx="140" cy="180" r="2"></circle><circle cx="180" cy="180" r="2"></circle><circle cx="220" cy="180" r="2"></circle><circle cx="260" cy="180" r="2"></circle>
+          <circle cx="20" cy="220" r="2"></circle><circle cx="60" cy="220" r="2"></circle><circle cx="100" cy="220" r="2"></circle><circle cx="140" cy="220" r="2"></circle><circle cx="180" cy="220" r="2"></circle><circle cx="220" cy="220" r="2"></circle><circle cx="260" cy="220" r="2"></circle>
+          <circle cx="20" cy="260" r="2"></circle><circle cx="60" cy="260" r="2"></circle><circle cx="100" cy="260" r="2"></circle><circle cx="140" cy="260" r="2"></circle><circle cx="180" cy="260" r="2"></circle><circle cx="220" cy="260" r="2"></circle><circle cx="260" cy="260" r="2"></circle>
+        </g>
+        <!-- shuttlecock arc, a smash trajectory -->
+        <path class="arc-path" d="M 30 250 Q 150 40 270 130" />
+        <circle cx="30" cy="250" r="5" fill="#3F7863"></circle>
+        <g transform="translate(258,118) rotate(35)">
+          <path d="M0 0 L14 4 L14 -4 Z" fill="#D9A441"></path>
+          <path d="M14 4 L22 10 M14 0 L22 0 M14 -4 L22 -10" stroke="#D9A441" stroke-width="1.5"></path>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <span class="eyebrow">About</span>
+      <h2 style="font-size:32px; margin-top:8px;">A bit more than the resume</h2>
+      <p>I'm a Computer Science student at Wayne State University (Irvin D. Reid Honors), currently working as a Data Analytics Intern where I spend my days in Python, Excel, and Tableau, turning raw datasets into dashboards people actually use. I like the moment right after the data finally makes sense.</p>
+      <p>Outside of that, I bake, mostly bread and anything that requires being precise about measurements, which is maybe why data analysis suits me. I also play badminton, which scratches the same itch: fast decisions, quick feedback, and knowing exactly when to adjust.</p>
+      <p>I'm open to internships and entry-level roles across data analytics, AI, and other tech-focused positions, wherever I can learn fast and do good work.</p>
+      <div class="tags">
+        <span class="tag">Data Analytics</span>
+        <span class="tag">AI / ML</span>
+        <span class="tag">Python</span>
+        <span class="tag">Baking 🍞</span>
+        <span class="tag">Badminton 🏸</span>
+      </div>
+    </div>
+    <div class="recipe-card reveal">
+      <span class="yield">Yield: 1 data analyst · Prep time: ongoing</span>
+      <h3>Recipe for a Data-Driven Mind</h3>
+      <span class="col-label">Ingredients</span>
+      <ul>
+        <li>3 cups Python (Pandas, NumPy, Matplotlib)</li>
+        <li>2 cups SQL, folded in slowly</li>
+        <li>1 heaping cup Tableau, for presentation</li>
+        <li>A pinch of C++ and Java, for structure</li>
+        <li>Excel, to taste</li>
+      </ul>
+      <span class="col-label">Method</span>
+      <ul class="method">
+        <li>Combine large datasets with patience, don't rush the cleaning step.</li>
+        <li>Fold in AI tools to automate the repetitive parts.</li>
+        <li>Bake into a dashboard until insights rise to the top.</li>
+        <li>Document the process clearly, so anyone can follow the recipe.</li>
+        <li>Serve to stakeholders while still fresh.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Experience</span>
+      <h2>Where I've put this to work</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <span class="tl-date">Aug 2025 – Dec 2025</span>
+        <h3>Data Analytics Intern</h3>
+        <div class="tl-org">Global Tech Internship, Wayne State University · Detroit, MI</div>
+        <ul>
+          <li>Analyze large datasets in Python and Excel to support data-driven decision making</li>
+          <li>Build interactive Tableau dashboards to present findings to stakeholders</li>
+          <li>Use AI tools to automate data workflows and improve reporting efficiency</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <span class="tl-date">Dec 2024 – Present</span>
+        <h3>Licensed Pharmacy Technician</h3>
+        <div class="tl-org">Warren Care Pharmacy · Warren, MI</div>
+        <ul>
+          <li>Process and verify prescriptions while maintaining accurate, compliant records</li>
+          <li>Manage data entry and recordkeeping across pharmacy management systems with close attention to detail</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <span class="tl-date">Nov 2023</span>
+        <h3>Election Data Assistant (Seasonal)</h3>
+        <div class="tl-org">City of Warren · Warren, MI</div>
+        <ul>
+          <li>Performed high-volume data entry and maintained detailed records under election guidelines</li>
+          <li>Ran validation checks and resolved data inconsistencies during a high-pressure cycle</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Projects</span>
+      <h2>Things I've built to learn by doing</h2>
+      <p>A few academic and self-directed projects where I got to take an idea from question to finished analysis.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card reveal">
+        <span class="eyebrow">Algorithms</span>
+        <h3>Adjacency Matrix Builder</h3>
+        <p>Engineered two algorithmic solutions to automate graph data processing, replacing linear searches with hash map lookups and cutting worst-case complexity from O(n³) to O(n²). Documented pseudocode and trade-offs for a non-technical audience.</p>
+        <div class="proj-tags"><span>Python</span><span>Algorithms</span><span>Documentation</span></div>
+      </div>
+      <div class="proj-card reveal">
+        <span class="eyebrow">Statistics</span>
+        <h3>Sleep & Academic Performance</h3>
+        <p>Cleaned and analyzed survey data with Pandas and NumPy, then ran regression and hypothesis testing to explore how sleep patterns relate to academic performance. Wrote up methodology and findings for a general audience.</p>
+        <div class="proj-tags"><span>Python</span><span>Pandas</span><span>Regression</span></div>
+      </div>
+      <div class="proj-card reveal">
+        <span class="eyebrow">IoT</span>
+        <h3>IoT Virtual Doctor</h3>
+        <p>Collected and monitored real-time IoT sensor data, catching anomalies and keeping the data pipeline clean. Produced structured datasets for system testing and documented validation and troubleshooting steps.</p>
+        <div class="proj-tags"><span>IoT</span><span>Data Pipelines</span><span>Testing</span></div>
+      </div>
+      <div class="proj-card reveal">
+        <span class="eyebrow">Internship</span>
+        <h3>YouTube Trends Analysis</h3>
+        <p>Analyzed YouTube trending video data to surface patterns in engagement and category performance, then built an interactive Tableau dashboard so the team could explore the findings themselves.</p>
+        <div class="proj-tags"><span>Python</span><span>Tableau</span><span>Trend Analysis</span></div>
+      </div>
+      <div class="proj-card reveal">
+        <span class="eyebrow">Internship</span>
+        <h3>Transit Ridership Study</h3>
+        <p>Explored BART ridership data to identify usage patterns across stations and time periods, translating the results into a clear dashboard and a written summary for non-technical stakeholders.</p>
+        <div class="proj-tags"><span>Python</span><span>Excel</span><span>Tableau</span></div>
+      </div>
+      <div class="proj-card reveal">
+        <span class="eyebrow">Internship</span>
+        <h3>Delivery Records Analysis</h3>
+        <p>Cleaned and analyzed delivery records to flag inefficiencies and reporting gaps, using AI tools to automate parts of the workflow and speed up turnaround on the final report.</p>
+        <div class="proj-tags"><span>Python</span><span>Automation</span><span>Reporting</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Skills</span>
+      <h2>What I work with</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-block reveal">
+        <span class="col-label">Languages</span>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">C++</span><span class="chip">Java</span><span class="chip">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-block reveal">
+        <span class="col-label">Tools</span>
+        <div class="chips">
+          <span class="chip">Jupyter</span><span class="chip">Git</span><span class="chip">GCP</span><span class="chip">Linux</span><span class="chip">Visual Studio</span><span class="chip">Copilot (M365)</span>
+        </div>
+      </div>
+      <div class="skill-block reveal">
+        <span class="col-label">Analytics</span>
+        <div class="chips">
+          <span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Matplotlib</span><span class="chip">Tableau</span><span class="chip">Excel</span><span class="chip">ETL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h2>Let's talk data.</h2>
+    <p>Open to data analyst, AI, and other tech-focused roles. Always happy to talk about a dataset, a project, or the best bread-to-flour ratio.</p>
+    <div class="contact-links">
+      <a class="btn btn-solid" href="mailto:alommufliha@gmail.com">alommufliha@gmail.com</a>
+      <a class="btn btn-outline" href="tel:5867184969">586-718-4969</a>
+      <a class="btn btn-outline" href="https://www.linkedin.com/in/mufliha-alom-0772a1299/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="foot-note">Built with care in Warren, MI</div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
